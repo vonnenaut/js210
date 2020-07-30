@@ -23,3 +23,12 @@ factorial(1);
 // factorial(3);
 // factorial(4);
 // factorial(5);
+
+function recursive_factorial(num) {
+  if (num === 1)
+    return num;
+
+  return num * factorial(num - 1);
+}
+
+console.log(recursive_factorial(5));
