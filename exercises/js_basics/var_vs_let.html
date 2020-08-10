@@ -1,0 +1,7 @@
+var messages = ["Meow!", "I'm a talking cat!", "Callbacks are fun!"];
+
+for (var i = 0; i < messages.length; i++) {
+  setTimeout(function () {
+    console.log(messages[i]);
+  }, i * 1500);
+}
