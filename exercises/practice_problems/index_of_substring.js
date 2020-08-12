@@ -16,9 +16,24 @@
   - For the lastIndexOf function, the algorithm is similar. However, for this function we start with the m - nth character in the first string and work backward to index 0.
 */
 
-function indexOf(firstrString, secondString) {
+function indexOf(firstString, secondString) {
   // searches for first instance of secondString in firstString, returning its first character index if found, otherwise returning -1
+  let m = firstString.length;
+  let n = secondString.length;
+  let num_matches = 0;
 
+  for (let idx = 0; idx <= (m - n); idx += 1) {
+    for (let idx2 = idx; idx2 <= (idx + n); idx2 += 1) {
+      if (firstString[idx2] === secondString[idx2]) {
+        num_matches += 1;
+      }
+    }
+    if (num_matches === n) {
+      return idx;
+    }
+  }
+
+  return -1;
 } 
 
 function lastIndexOf(firstString, secondString) {
@@ -26,11 +41,12 @@ function lastIndexOf(firstString, secondString) {
 
 }
 
-indexOf('Some strings', 's');                      // 5
-indexOf('Blue Whale', 'Whale');                    // 5
-indexOf('Blue Whale', 'Blute');                    // -1
-indexOf('Blue Whale', 'leB');                      // -1
+console.log(indexOf('Some strings', 's'));                      // 5
+console.log(indexOf('Blue Whale', 'Whale'));                    // 5
+console.log(indexOf('Blue Whale', 'Blute'));                    // -1
+console.log(indexOf('Blue Whale', 'leB'))
+                     // -1
 
-lastIndexOf('Some strings', 's');                  // 11
-lastIndexOf('Blue Whale, Killer Whale', 'Whale');  // 19
-lastIndexOf('Blue Whale, Killer Whale', 'all');    // -1
+// lastIndexOf('Some strings', 's');                  // 11
+// lastIndexOf('Blue Whale, Killer Whale', 'Whale');  // 19
+// lastIndexOf('Blue Whale, Killer Whale', 'all');    // -1
