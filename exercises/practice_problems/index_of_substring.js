@@ -18,18 +18,21 @@
 
 function indexOf(firstString, secondString) {
   // searches for first instance of secondString in firstString, returning its first character index if found, otherwise returning -1
-  let m = firstString.length;
-  let n = secondString.length;
+  let first_length = firstString.length;
+  let second_length = secondString.length;
   let num_matches = 0;
 
-  for (let idx = 0; idx <= (m - n); idx += 1) {
-    for (let idx2 = idx; idx2 <= (idx + n); idx2 += 1) {
-      if (firstString[idx2] === secondString[idx2]) {
+  for (let first_idx = 0; first_idx <= (first_length - second_length); first_idx += 1) {
+    for (let second_idx = 0; second_idx < secondString.length; second_idx += 1) {
+      if (firstString[first_idx + second_idx] === secondString[second_idx]) {
         num_matches += 1;
+      } else {
+        break;
       }
     }
-    if (num_matches === n) {
-      return idx;
+    
+    if (num_matches === second_length) {
+      return first_idx;
     }
   }
 
@@ -38,6 +41,29 @@ function indexOf(firstString, secondString) {
 
 function lastIndexOf(firstString, secondString) {
   // searches for last instance of secondString in firstString, returning its first character index if found, otherwise returning -1
+  let first_length = firstString.length;
+  let second_length = secondString.length;
+  let num_matches = 0;
+
+  for (let first_idx = first_length - second_length; first_idx >= 0; first_idx -= 1) {
+    for (let second_idx = 0; second_idx < secondString.length; second_idx += 1) {
+      if (firstString[first_idx + second_idx] === secondString[second_idx]) {
+        num_matches += 1;
+      } else {
+        break;
+      }
+    }
+    
+    if (num_matches === second_length) {
+      return first_idx;
+    }
+  }
+
+  return -1;
+}
+
+function lastIndexOf2(firstString, secondString) {
+  
 
 }
 
@@ -47,6 +73,6 @@ console.log(indexOf('Blue Whale', 'Blute'));                    // -1
 console.log(indexOf('Blue Whale', 'leB'))
                      // -1
 
-// lastIndexOf('Some strings', 's');                  // 11
-// lastIndexOf('Blue Whale, Killer Whale', 'Whale');  // 19
-// lastIndexOf('Blue Whale, Killer Whale', 'all');    // -1
+console.log(lastIndexOf('Some strings', 's'));                  // 11
+console.log(lastIndexOf('Blue Whale, Killer Whale', 'Whale'));  // 19
+console.log(lastIndexOf('Blue Whale, Killer Whale', 'all'));    // -1
