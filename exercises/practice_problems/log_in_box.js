@@ -1,3 +1,13 @@
+function repeatChar(char, times) {
+  output = '';
+
+  while (output.length < times) {
+    output += char;
+  }
+
+  return output;
+}
+
 function logInBox(text) {
   let top_border = "+" + repeatChar('-', text.length + 2) + "+";
   let intermediate_line = "|" + repeatChar(" " , text.length + 2) + "|";
