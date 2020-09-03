@@ -1,6 +1,10 @@
 function slice(array, begin, end) {
   let slice = [];
 
+  if (begin > array.length - 1) {
+    begin = array.length;
+  }
+  
   if (end > array.length - 1) {
     end = array.length;
   }
@@ -12,7 +16,6 @@ function slice(array, begin, end) {
   return slice;
 }
 
-/*
 // Test slice
 console.log(slice([1, 2, 3], 1, 2));               // [2]
 console.log(slice([1, 2, 3], 2, 0));               // []
@@ -22,7 +25,7 @@ console.log(slice([1, 2, 3], 0, 5));               // [1, 2, 3]
 const arr1 = [1, 2, 3];
 console.log(slice(arr1, 1, 3));                     // [2, 3]
 console.log(arr1);                                  // [1, 2, 3]
-*/
+
 function replaceElement(array, index, value) {
   array[index] = value;
 }
@@ -67,8 +70,8 @@ function splice(array, start, deleteCount, ...elements) {
       deleteCount -= 1;
     } 
 
-    if (deleteCount === 0 && elements.length > 0) {
-      insertElement(array, start, newEl);
+    if (deleteCount === 0) {
+      insertElement(array, idx, newEl);
     }
   }
 
@@ -85,12 +88,12 @@ console.log(splice([1, 2, 3], 1, 0, 'a'));         // []
 console.log('\n');
 */
 
-const arr2 = [1, 2, 3];
+let arr2 = [1, 2, 3];
 console.log(splice(arr2, 1, 1, 'two'));             // [2]
 console.log(arr2);                                  // [1, "two", 3]
 console.log('\n');
 
-const arr3 = [1, 2, 3];
+let arr3 = [1, 2, 3];
 console.log(splice(arr3, 1, 2, 'two', 'three'));    // [2, 3]
 console.log(arr3);                                  // [1, "two", "three"]
 console.log('\n');
@@ -103,13 +106,13 @@ insertElement(arr1, idx, value);
 console.log(arr1);                                  // [1, 'a', 2, 3]
 console.log('\n');
 
-const arr4 = [1, 2, 3];
+let arr4 = [1, 2, 3];
 console.log(splice(arr4, 1, 0));                    // []
 console.log(splice(arr4, 1, 0, 'a'));               // []
 console.log(arr4);                                  // [1, "a", 2, 3]
 console.log('\n');
 
-const arr5 = [1, 2, 3];
+let arr5 = [1, 2, 3];
 console.log(splice(arr5, 0, 0, 'a'));               // []
 console.log(arr5);                                  // ["a", 1, 2, 3]
 console.log('\n');
