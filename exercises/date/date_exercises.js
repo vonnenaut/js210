@@ -68,4 +68,37 @@ function formattedDate(date) {
 
 formattedDate(today);
 
+// 9.
+console.log(today.getFullYear());
+console.log(today.getYear());
 
+// 10.
+console.log(today.getTime());
+
+// 11.
+let tomorrow = new Date(today.getTime());
+tomorrow.setDate(today.getDate() + 1);
+formattedDate(tomorrow);
+
+// 12.
+let nextWeek = new Date(today.getTime());
+console.log(nextWeek === today);
+
+// 13.
+console.log(nextWeek.toDateString() === today.toDateString());
+
+// 14.
+function formatTime(date) {
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+
+  if (String(hours).length < 2) {
+    hours = '0' + String(hours);
+  }
+
+  return `${hours}:${minutes}`; 
+}
+
+console.log('\n');
+console.log(formatTime(today));
+console.log(formatTime(new Date(2013, 2, 1, 1, 10)));
